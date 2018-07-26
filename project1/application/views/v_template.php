@@ -28,7 +28,7 @@
 
   <div class="sidenav">
       <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="<?php echo base_url('index.php/template/BI');?>">Bank Indonesia</a></li>
+        <li><a href="<?php echo base_url('index.php/template/BI');?>">Bank Indonesia</a></li>
         <li><a href="<?php echo base_url('index.php/template/HSBC');?>">HSBC</a></li>
         <li><a href="<?php echo base_url('index.php/template/MAS');?>">MAS</a></li>
         <li><a href="<?php echo base_url('index.php/template/YF');?>">Yahoo Finance</a></li>
