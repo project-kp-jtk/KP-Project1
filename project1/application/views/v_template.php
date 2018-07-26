@@ -28,10 +28,10 @@
 
   <div class="sidenav">
       <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#section1">Item 0</a></li>
-        <li><a href="#section2">Item 1</a></li>
-        <li><a href="#section3">Item 2</a></li>
-        <li><a href="#section3">Item3</a></li>
+        <li class="active"><a href="#section1">Dashboard</a></li>
+        <li><a href="<?php echo base_url('index.php/template/source/bi')?>">Bank Indonesia</a></li>
+        <li><a href="<?php echo base_url('index.php/template/source/hsbc')?>">Hongkong & Shanghai Bank Corporation</a></li>
+        <li><a href="<?php echo base_url('index.php/template/source/mas')?>">Monetary Authority Singapore</a></li>
       </ul>
     </div>
 
