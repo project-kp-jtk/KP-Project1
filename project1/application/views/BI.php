@@ -15,12 +15,12 @@
     <?php foreach ($list_kurs->result() as $row) {
     ?>
     <tr>
-      <td><?php echo $row->kode_matauang;?></td>
-      <td><?php echo $row->tanggal;?></td>
-      <td><?php echo $row->nilai;?></td>
-      <td><?php echo $row->kurs_jual;?></td>
-      <td><?php echo $row->kurs_beli;?></td>
-      <td><?php echo $row->kurs_tengah;?></td>
+      <td><?php echo $row->MATA_UANG;?></td>
+      <td><?php echo $row->TANGGAL;?></td>
+      <td><?php echo number_format($row->NILAI, 2, ".", ",");?></td>
+      <td><?php echo number_format($row->KURS_JUAL, 2, ".", ",");?></td>
+      <td><?php echo number_format($row->KURS_BELI, 2, ".", ",");?></td>
+      <td><?php echo number_format($row->KURS_TENGAH, 2, ".", ",");?></td>
     </tr>
   <?php } ?>
   </tbody>
