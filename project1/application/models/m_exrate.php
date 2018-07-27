@@ -1,9 +1,21 @@
 <?php
-class M_exrate extends CI_Model{
-  function get_list_kurs_BI(){
-      $query = $this->db->query("SELECT * FROM ex_rate WHERE id_source=1 ORDER BY tanggal");
-      return $query;
-    }
-}
 
+    class M_exrate extends CI_Model{
+
+        public function __construct(){
+            $this->load->database();
+
+        }
+
+        function get_data_sourcebased($source_id){
+            $sql_select = "SELECT * FROM exchange_rate WHERE SOURCE='".$source_id."'";
+            $result = $this->db->query($sql_select);
+            return $result;
+        }
+
+        function insert_data($table, $data){
+            $this->db->insert($table, $data);
+        }
+    }
+    
 ?>
