@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: 31 Jul 2018 pada 02.32
--- Versi Server: 10.1.26-MariaDB
--- PHP Version: 7.0.22
+-- Host: localhost
+-- Generation Time: Jul 31, 2018 at 06:38 AM
+-- Server version: 10.1.30-MariaDB
+-- PHP Version: 5.6.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -26,10 +26,12 @@ SET time_zone = "+00:00";
 
 --
 -- Stand-in structure for view `exchange_rate`
--- (Lihat di bawah untuk tampilan aktual)
+-- (See below for the actual view)
 --
 CREATE TABLE `exchange_rate` (
-`SOURCE` varchar(50)
+`ID_SOURCE` int(11)
+,`SOURCE` varchar(50)
+,`KODE_MATAUANG` varchar(5)
 ,`MATA_UANG` varchar(100)
 ,`NILAI` int(11)
 ,`TANGGAL` datetime
@@ -41,7 +43,7 @@ CREATE TABLE `exchange_rate` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `ex_rate`
+-- Table structure for table `ex_rate`
 --
 
 CREATE TABLE `ex_rate` (
@@ -55,7 +57,7 @@ CREATE TABLE `ex_rate` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `ex_rate`
+-- Dumping data for table `ex_rate`
 --
 
 INSERT INTO `ex_rate` (`id_source`, `kode_matauang`, `tanggal`, `nilai`, `kurs_jual`, `kurs_beli`, `kurs_tengah`) VALUES
@@ -134,6 +136,21 @@ INSERT INTO `ex_rate` (`id_source`, `kode_matauang`, `tanggal`, `nilai`, `kurs_j
 (1, 'VND  ', '2018-07-26 10:09:22', 1, '0.6300', '0.6200', '0.6250'),
 (1, 'VND  ', '2018-07-30 08:44:07', 1, '0.6200', '0.6200', '0.6200'),
 (1, 'VND  ', '2018-07-30 11:02:43', 1, '0.6200', '0.6200', '0.6200'),
+(2, 'AUD', '2018-07-31 03:50:08', 1, '0.0000', '0.0000', '1.0071'),
+(2, 'AUD', '2018-07-31 04:29:23', 1, '0.0000', '0.0000', '1.0071'),
+(2, 'AUD', '2018-07-31 04:29:29', 1, '0.0000', '0.0000', '1.0071'),
+(2, 'EUR', '2018-07-30 00:00:00', 1, '0.0000', '0.0000', '1.5880'),
+(2, 'EUR', '2018-07-31 03:47:04', 1, '0.0000', '0.0000', '1.5880'),
+(2, 'EUR', '2018-07-31 03:50:08', 1, '0.0000', '0.0000', '1.5880'),
+(2, 'EUR', '2018-07-31 04:28:11', 1, '0.0000', '0.0000', '1.5880'),
+(2, 'EUR', '2018-07-31 04:29:23', 1, '0.0000', '0.0000', '1.5880'),
+(2, 'EUR', '2018-07-31 04:29:29', 1, '0.0000', '0.0000', '1.5880'),
+(2, 'IDR', '2018-07-31 03:50:08', 100, '0.0000', '0.0000', '0.0095'),
+(2, 'IDR', '2018-07-31 04:29:23', 100, '0.0000', '0.0000', '0.0095'),
+(2, 'IDR', '2018-07-31 04:29:29', 100, '0.0000', '0.0000', '0.0095'),
+(2, 'USD', '2018-07-31 03:50:08', 1, '0.0000', '0.0000', '1.3626'),
+(2, 'USD', '2018-07-31 04:29:23', 1, '0.0000', '0.0000', '1.3626'),
+(2, 'USD', '2018-07-31 04:29:29', 1, '0.0000', '0.0000', '1.3626'),
 (3, 'AUD', '2018-07-30 11:13:14', 1, '5.7265', '5.8831', '5.8048'),
 (3, 'AUD', '2018-07-30 11:15:37', 1, '5.7258', '5.8824', '5.8041'),
 (3, 'CAD', '2018-07-30 11:13:14', 1, '5.9216', '6.0891', '6.0054'),
@@ -164,7 +181,7 @@ INSERT INTO `ex_rate` (`id_source`, `kode_matauang`, `tanggal`, `nilai`, `kurs_j
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `matauang`
+-- Table structure for table `matauang`
 --
 
 CREATE TABLE `matauang` (
@@ -173,7 +190,7 @@ CREATE TABLE `matauang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `matauang`
+-- Dumping data for table `matauang`
 --
 
 INSERT INTO `matauang` (`nama_matauang`, `kode_matauang`) VALUES
@@ -207,7 +224,7 @@ INSERT INTO `matauang` (`nama_matauang`, `kode_matauang`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `source`
+-- Table structure for table `source`
 --
 
 CREATE TABLE `source` (
@@ -217,7 +234,7 @@ CREATE TABLE `source` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `source`
+-- Dumping data for table `source`
 --
 
 INSERT INTO `source` (`id_source`, `nama_source`, `deskripsi`) VALUES
@@ -229,11 +246,11 @@ INSERT INTO `source` (`id_source`, `nama_source`, `deskripsi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur untuk view `exchange_rate`
+-- Structure for view `exchange_rate`
 --
 DROP TABLE IF EXISTS `exchange_rate`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `exchange_rate`  AS  select `s`.`nama_source` AS `SOURCE`,`m`.`nama_matauang` AS `MATA_UANG`,`e`.`nilai` AS `NILAI`,`e`.`tanggal` AS `TANGGAL`,`e`.`kurs_jual` AS `KURS_JUAL`,`e`.`kurs_beli` AS `KURS_BELI`,`e`.`kurs_tengah` AS `KURS_TENGAH` from ((`source` `s` join `matauang` `m`) join `ex_rate` `e`) where ((`s`.`id_source` = `e`.`id_source`) and (`m`.`kode_matauang` = `e`.`kode_matauang`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `exchange_rate`  AS  select `s`.`id_source` AS `ID_SOURCE`,`s`.`nama_source` AS `SOURCE`,`m`.`kode_matauang` AS `KODE_MATAUANG`,`m`.`nama_matauang` AS `MATA_UANG`,`e`.`nilai` AS `NILAI`,`e`.`tanggal` AS `TANGGAL`,`e`.`kurs_jual` AS `KURS_JUAL`,`e`.`kurs_beli` AS `KURS_BELI`,`e`.`kurs_tengah` AS `KURS_TENGAH` from ((`source` `s` join `matauang` `m`) join `ex_rate` `e`) where ((`s`.`id_source` = `e`.`id_source`) and (`m`.`kode_matauang` = `e`.`kode_matauang`)) ;
 
 --
 -- Indexes for dumped tables
@@ -259,11 +276,11 @@ ALTER TABLE `source`
   ADD PRIMARY KEY (`id_source`);
 
 --
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+-- Constraints for dumped tables
 --
 
 --
--- Ketidakleluasaan untuk tabel `ex_rate`
+-- Constraints for table `ex_rate`
 --
 ALTER TABLE `ex_rate`
   ADD CONSTRAINT `ex_rate_ibfk_1` FOREIGN KEY (`id_source`) REFERENCES `source` (`id_source`) ON UPDATE CASCADE,
