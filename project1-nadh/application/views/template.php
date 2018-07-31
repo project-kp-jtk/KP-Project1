@@ -18,8 +18,8 @@
 			</div>
 			<div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav">
-	        <li class="li-menu"><a href="<?php echo base_url('index.php/template/index');?>">Display Kurs</a></li>
-	        <li class="li-menu"><a href="<?php echo base_url('index.php/template/history');?>">History</a></li>
+	        <li class="li-menu"><a href="<?php echo base_url('index.php/home/index');?>">Display Kurs</a></li>
+	        <li class="li-menu"><a href="<?php echo base_url('index.php/home/history');?>">History</a></li>
 	      </ul>
 			</div>
 		</div>
@@ -28,10 +28,10 @@
 
   <div class="sidenav">
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="<?php echo base_url('index.php/template/BI');?>">Bank Indonesia</a></li>
-        <li><a href="<?php echo base_url('index.php/template/HSBC');?>">HSBC</a></li>
-        <li><a href="<?php echo base_url('index.php/template/MAS');?>">MAS</a></li>
-        <li><a href="<?php echo base_url('index.php/template/YF');?>">Yahoo Finance</a></li>
+        <li><a href="<?php echo base_url('index.php/home/source/bi');?>">Bank Indonesia</a></li>
+        <li><a href="<?php echo base_url('index.php/home/source/hsbc');?>">HSBC</a></li>
+        <li><a href="<?php echo base_url('index.php/home/source/mas');?>">MAS</a></li>
+        <li><a href="<?php echo base_url('index.php/home/source/yahoo');?>">Yahoo Finance</a></li>
       </ul>
     </div>
 
