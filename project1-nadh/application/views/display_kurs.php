@@ -16,7 +16,7 @@
           <?php foreach ($list_bi->result() as $row) {
           ?>
             <tr>
-              <td><?php echo $row->KODE_MATAUANG;?></td>
+              <td><?php echo $row->KODE;?></td>
               <td><?php echo $row->KURS_TENGAH;?></td>
             </tr>
           <?php } ?>
@@ -38,7 +38,7 @@
           <?php foreach ($list_hsbc->result() as $row) {
           ?>
             <tr>
-              <td><?php echo $row->KODE_MATAUANG;?></td>
+              <td><?php echo $row->KODE;?></td>
               <td><?php echo $row->KURS_TENGAH;?></td>
             </tr>
           <?php } ?>
@@ -59,7 +59,7 @@
           <?php foreach ($list_mas->result() as $row) {
           ?>
             <tr>
-              <td><?php echo $row->KODE_MATAUANG;?></td>
+              <td><?php echo $row->KODE;?></td>
               <td><?php echo $row->KURS_TENGAH;?></td>
               <td></td>
             </tr>

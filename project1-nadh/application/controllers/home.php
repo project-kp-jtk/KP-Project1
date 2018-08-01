@@ -24,6 +24,7 @@ class Home extends CI_Controller{
 	function source(){
 		$src = $this->uri->segment(3);
 		$data['list_kurs'] = $this->m_exrate->get_data_sourcebased(strtoupper($src));
+		$data['comp'] = $this->m_exrate->getCurr('USD', strtoupper($src));
 		$data['content_view'] = "source.php";
 		$data['source_string'] = array(
 			'bi' => 'Bank Indonesia',
