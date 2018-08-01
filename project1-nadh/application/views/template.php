@@ -19,7 +19,7 @@
 			<div class="collapse navbar-collapse" id="myNavbar">
 	      <ul class="nav navbar-nav">
 	        <li class="li-menu"><a href="<?php echo base_url('index.php/home/index');?>">Display Kurs</a></li>
-	        <li class="li-menu"><a href="<?php echo base_url('index.php/home/history');?>">History</a></li>
+	        <li class="li-menu"><a href="<?php echo base_url('index.php/home/import');?>">Import</a></li>
 	      </ul>
 			</div>
 		</div>

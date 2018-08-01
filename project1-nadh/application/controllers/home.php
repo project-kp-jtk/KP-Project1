@@ -9,12 +9,15 @@ class Home extends CI_Controller{
 	}
 
 	function index(){
+		$data['list_bi'] = $this->m_exrate->get_data_datebased(strtoupper(1));
+		$data['list_hsbc'] = $this->m_exrate->get_data_datebased(strtoupper(3));
+		$data['list_mas'] = $this->m_exrate->get_data_datebased(strtoupper(2));
 		$data['content_view'] = "display_kurs.php";
 		$this->load->view('template',$data);
 	}
 
-	function history(){
-		$data['content_view'] = "display_history.php";
+	function import(){
+		$data['content_view'] = "v_import.php";
 		$this->load->view('template',$data);
 	}
 
