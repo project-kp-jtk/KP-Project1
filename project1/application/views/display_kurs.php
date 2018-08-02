@@ -1,49 +1,70 @@
 
   <center><h2>Kurs Mata Uang Terakhir</h2></center>
-
-  <table class="table table-striped">
-    <thead>
-      <div align="center">
-      <tr>
-        <th colspan="1"></th>
-        <th colspan="2"><div align="center"><img class="logo-BI" src="<?php echo base_url()?>assets/img/BI.png"</div></th>
-        <th colspan="2"><div align="center"><img class="logo-HSBC" src="<?php echo base_url()?>assets/img/HSBC.png"</div></th>
-        <th colspan="1"><div align="center"><img class="logo-MAS" src="<?php echo base_url()?>assets/img/MAS.png"</div></th>
-      </tr>
-      <tr>
-        <th>Mata Uang</th>
-        <th>Kurs Jual</th>
-        <th>Kurs Beli</th>
-        <th>Bank Buy</th>
-        <th>Bank Sell</th>
-        <th>Avg. Rate</th>
-      </tr>
+  <hr>
+  <div class="row">
+    <div class="col-sm-4">
+      <img class="logo-BI" src="<?php echo base_url()?>assets/img/BI.png">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Kode</th>
+            <th>Tengah</th>
+            <th>SAP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($list_bi->result() as $row) {
+          ?>
+            <tr>
+              <td><?php echo $row->KODE;?></td>
+              <td><?php echo number_format($row->KURS_TENGAH, 3, ".", ",");?></td>
+            </tr>
+          <?php } ?>
+        </tbody>
+      </table>
     </div>
-    </thead>
-    <tbody>
-      <tr>
-        <td>IDR</td>
-        <td>0</td>
-        <td>0</td>
-        <td>-</td>
-        <td>-</td>
-        <td>0.009406</td>
-      </tr>
-      <tr>
-        <td>EUR</td>
-        <td>17,054.98</td>
-        <td>16,883.03</td>
-        <td>9.04570</td>
-        <td>9.29570</td>
-        <td>1.5980</td>
-      </tr>
-      <tr>
-        <td>USD</td>
-        <td>14,526.00</td>
-        <td>14,382.00</td>
-        <td>-</td>
-        <td>-</td>
-        <td>1.3611</td>
-      </tr>
-    </tbody>
-  </table>
+
+    <div class="col-sm-4">
+      <img class="logo-HSBC" src="<?php echo base_url()?>assets/img/HSBC.png">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Kode</th>
+            <th>Tengah</th>
+            <th>SAP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($list_hsbc->result() as $row) {
+          ?>
+            <tr>
+              <td><?php echo $row->KODE;?></td>
+              <td><?php echo number_format($row->KURS_TENGAH, 5, ".", ",");?></td>
+            </tr>
+          <?php } ?>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-sm-4">
+      <img class="logo-MAS" src="<?php echo base_url()?>assets/img/MAS.png">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Kode</th>
+            <th>Tengah</th>
+            <th>SAP</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php foreach ($list_mas->result() as $row) {
+          ?>
+            <tr>
+              <td><?php echo $row->KODE;?></td>
+              <td><?php echo number_format($row->KURS_TENGAH, 5, ".", ",");?></td>
+              <td></td>
+            </tr>
+          <?php } ?>
+        </tbody>
+      </table>
+    </div>
+  </div>
