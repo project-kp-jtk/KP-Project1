@@ -1,3 +1,6 @@
+.head{
+  display:inline;
+}
 .navbar {
       margin-bottom: 0;
       background-color: white;
@@ -35,7 +38,7 @@
 
 #main {
   margin-left: 160px; /* Same as the width of the sidenav */
-/* font-size: 28px; /* Increased text to enable scrolling */ 
+/* font-size: 28px; /* Increased text to enable scrolling */
 padding: 0px 10px;
 margin-top: 70px;
 margin-left: 180px;

@@ -1,6 +1,6 @@
 
   <center><h2>Kurs Mata Uang Terakhir</h2></center>
-
+  <hr>
   <div class="row">
     <div class="col-sm-4">
       <img class="logo-BI" src="<?php echo base_url()?>assets/img/BI.png">

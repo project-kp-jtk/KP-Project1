@@ -1,12 +1,24 @@
 <h2>Import Data</h2>
-
-<font size="3">
-<form action="" method="POST" enctype="multipart/form-data">
-  Select a file: <input type="file" name="file">
-  <input type="submit" name="preview" value="Preview">
-</form>
 <br>
+<font size="3">
 
+<div class="head">
+<form action="" class="form-inline"method="POST" enctype="multipart/form-data">
+  <div class="form-group">
+    <input type="file" class="form-control-file" name="file" aria-describedby="fileHelp">
+    <small id="fileHelp" class="form-text text-muted">Input file to import.</small>
+  </div>
+  <button type="submit" name="preview" class="btn btn-success btn-sm">
+    <span class="glyphicon glyphicon-eye-open"></span> Preview
+  </button>
+</form>
+</div>
+<br>
+<?php
+if(isset($_POST['preview'])){
+$file = $_FILES['file']['tmp_name'];
+$open = fopen($file,'r');
+ ?>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -22,9 +34,6 @@
 </thead>
 <tbody>
   <?php
-  if(isset($_POST['preview'])){
-  $file = $_FILES['file']['tmp_name'];
-  $open = fopen($file,'r');
   while (!feof($open))
   {
   	$getTextLine = fgets($open);
@@ -42,9 +51,17 @@
     <td><?php echo $ratio_b;?></td>
   </tr>
 <?php } ?>
-  <button name="import" type="button" class="btn btn-primary" action="<?php echo base_url('index.php/import/insertDB')?>">Import</button>
+  <button name="import" type="button" class="btn btn-primary" action="<?php echo base_url('index.php/import/insertDB')?>">
+    <span class='glyphicon glyphicon-upload'></span> Import
+  </button>
+  <hr>
 <?php } ?>
 </tbody>
 </table>
-
+<div class="alert alert-success">
+  <strong>Success!</strong> Import data success.
+</div>
+<div class="alert alert-danger">
+  <strong>Failed!</strong> Import data failed.
+</div>
 </font>

@@ -1,6 +1,7 @@
 <h2>
   <?php
     $src = $this->uri->segment(3);
+    $date = "";
     foreach ($comp->result() as $row) {
       // code...
       $comparator = $row->KURS_TENGAH;
@@ -16,13 +17,15 @@
 <h2>
 
 <font size="3">
+  <font size="2" color="red">Updated: <?php echo $date; ?> </font>
+  <br>
   <form action="<?php echo base_url('index.php/home/source/'.$src)?>" method="POST">
     Group by: <input type="date" name="tgl">
-    <input type="submit">
+    <button class="btn btn-success">
+      <span class="glyphicon glyphicon-search"></span>
+    </button>
   </form>
-  <br>
-  Updated: <?php echo $date; ?>
-  <br>
+  <hr>
   <table class="table table-striped">
     <thead>
       <tr>
