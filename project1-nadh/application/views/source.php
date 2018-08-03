@@ -7,7 +7,7 @@
       $comparator = $row->KURS_TENGAH;
       $date = $row->TANGGAL;
     }
-    echo $source_string[$src];
+    echo $source_string[$src][0];
     if($src == 'bi'){
       $dec = 2;
     }else{
@@ -50,24 +50,7 @@
       <td><?php echo number_format($row->KURS_TENGAH, 5, ".", ",");?></td>
       <td>
         <?php
-          switch ($src) {
-            case 'bi':
-              // code...
-              echo "IDR";
-              break;
-
-            case 'hsbc':
-                // code...
-                echo "HKD";
-              break;
-            case 'mas':
-                // code...
-                echo "SGD";
-                break;
-            default:
-              // code...
-              break;
-          }
+          echo $source_string[$src][1]
         ?>
       </td>
     </tr>

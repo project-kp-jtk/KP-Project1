@@ -17,7 +17,7 @@
           ?>
             <tr>
               <td><?php echo $row->KODE;?></td>
-              <td><?php echo $row->KURS_TENGAH;?></td>
+              <td><?php echo number_format($row->KURS_TENGAH, 3, ".", ",");?></td>
             </tr>
           <?php } ?>
         </tbody>
@@ -39,7 +39,7 @@
           ?>
             <tr>
               <td><?php echo $row->KODE;?></td>
-              <td><?php echo $row->KURS_TENGAH;?></td>
+              <td><?php echo number_format($row->KURS_TENGAH, 5, ".", ",");?></td>
             </tr>
           <?php } ?>
         </tbody>
@@ -60,7 +60,7 @@
           ?>
             <tr>
               <td><?php echo $row->KODE;?></td>
-              <td><?php echo $row->KURS_TENGAH;?></td>
+              <td><?php echo number_format($row->KURS_TENGAH, 5, ".", ",");?></td>
               <td></td>
             </tr>
           <?php } ?>
