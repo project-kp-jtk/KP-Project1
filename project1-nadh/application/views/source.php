@@ -15,17 +15,17 @@
     }
   ?>
 <h2>
-
+<hr>
 <font size="3">
   <font size="2" color="#337ab7">Updated: <?php echo $date; ?> </font>
   <br>
-  <form action="<?php echo base_url('index.php/home/source/'.$src)?>" method="POST">
+  <form action="<?php echo base_url('index.php/web/source/'.$src)?>" method="POST">
     Group by: <input type="date" name="tgl">
     <button class="btn btn-success">
       <span class="glyphicon glyphicon-search"></span>
     </button>
   </form>
-  <hr>
+  <br>
   <table class="table table-striped">
     <thead>
       <tr>
