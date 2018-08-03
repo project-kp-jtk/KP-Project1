@@ -1,11 +1,10 @@
 <h2>Import Data</h2>
-
-<?php echo $error;?>
 <br>
 <font size="3">
 
 <div class="head">
-<?php echo form_open_multipart('import/upload_file'); ?>
+  <center>
+<form action="" method="POST" enctype="multipart/form-data">
   <div class="form-group">
     <input type="file" class="form-control-file" name="file" aria-describedby="fileHelp">
     <small id="fileHelp" class="form-text text-muted">Input file to import.</small>
@@ -14,6 +13,7 @@
     <span class="glyphicon glyphicon-eye-open"></span> Preview
   </button>
 </form>
+</center>
 </div>
 <br>
 <?php

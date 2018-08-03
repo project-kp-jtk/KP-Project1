@@ -1,13 +1,13 @@
-.head{
-  display:inline;
-}
+
 .navbar {
       margin-bottom: 0;
-      background-color: white;
+      background-color: black;
       border-color: white;
       z-index: 2;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    }
+    
+  }
+
 .navbar-brand{
   margin-top: -5px;
 }
@@ -30,23 +30,18 @@
 .container{
   max-width: 700px;
 }
-.li-menu:hover {
-  border-radius: 4px;
+.nav-item:hover{
   background-color: #337ab7;
   display: block;
+  color: seashell;
 }
-
 #main {
-  margin-left: 160px; /* Same as the width of the sidenav */
-/* font-size: 28px; /* Increased text to enable scrolling */
 padding: 0px 10px;
 margin-top: 70px;
-margin-left: 180px;
+margin-left: 20px;
 margin-right: 20px;
 }
-.nav.nav-pills.nav-stacked {
-  margin-top: 40px;
-}
+
 .navbar {
     overflow: hidden;
     position: fixed; /* Set the navbar to fixed position */
@@ -54,25 +49,15 @@ margin-right: 20px;
     width: 100%; /* Full width */
 }
     /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    .row.content {height: 750px}
+    /* .row.content {height: 750px;} */
 
     /* Set gray background color and 100% height */
-    .sidenav {
-      height: 100%;
-      width: 160px;
-      position: fixed;
-      z-index: 1;
-      top: 0;
-      left: 0;
-      background-color: #f1f1f1;
-      overflow-x: hidden;
-      padding-top: 20px;
-    }
+   
 
     /* On small screens, set height to 'auto' for sidenav and grid */
-    @media screen and (max-height: 450px) {
+    /* @media screen and (max-height: 450px) {
       .sidenav {
         padding-top: 15px;
       }
       .row.content {height:auto;}
-    }
+    } */
