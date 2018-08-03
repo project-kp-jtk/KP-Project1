@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'web/index';
 $route['import'] = 'import/index';
+$route['import/upload_file'] = 'import/upload_file';
 $route['import/(:any)'] = 'import/index/$1';
 $route['(:any)'] = "web/index/$1";
 $route['404_override'] = '';
