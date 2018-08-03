@@ -21,8 +21,8 @@
   <br>
   <form action="<?php echo base_url('index.php/web/source/'.$src)?>" method="POST">
     Group by: <input type="date" name="tgl">
-    <button class="btn btn-success">
-      <span class="glyphicon glyphicon-search"></span>
+    <button type="button" class="btn btn-success">
+      <span class="glyphicon glyphicon-search"></span>  Search
     </button>
   </form>
   <br>
