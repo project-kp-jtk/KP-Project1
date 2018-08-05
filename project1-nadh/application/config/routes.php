@@ -50,6 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 $route['default_controller'] = 'web/index';
+$route['web/display_import'] = 'web/display_import';
 $route['import'] = 'import/index';
 $route['import/import_file'] = 'import/import_file';
 $route['import/(:any)'] = 'import/index/$1';

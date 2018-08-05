@@ -28,6 +28,10 @@ class Web extends CI_Controller{
 			'yahoo' => array('Yahoo Finance', '')
 		);
 		$this->load->view('template',$data);
+	}
 
+	function display_import(){
+		$data['content_view'] = "view_display_import.php";
+		$this->load->view('template',$data);
 	}
 }
