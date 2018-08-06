@@ -11,17 +11,17 @@ class Update extends CI_Controller{
 	function bi(){
 
 		$this->m_exrate->bi();
-		redirect(base_url('index.php/home/source/bi'));
+		redirect(base_url('index.php/web/source/bi'));
 	}
 
 	function hsbc(){
 		$this->m_exrate->hsbc();
-		redirect(base_url('index.php/home/source/hsbc'));
+		redirect(base_url('index.php/web/source/hsbc'));
 	}
 
 	function mas(){
 		$this->m_exrate->mas();
-		redirect(base_url('index.php/home/source/mas'));
+		redirect(base_url('index.php/web/source/mas'));
 	}
 
 }

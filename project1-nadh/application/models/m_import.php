@@ -42,9 +42,9 @@ class M_import extends CI_Model{
 
     function show_data_import($tgl){
       if($tgl != null){
-        $sql_select = "SELECT * FROM import WHERE valid='".$tgl."' ORDER BY from_curr ASC";
+        $sql_select = "SELECT * FROM import WHERE valid='".$tgl."' ORDER BY exrate ASC, from_curr ASC, to_curr ASC";
     }else {
-        $sql_select = "SELECT * FROM import WHERE valid=(SELECT MAX(valid) FROM import) ORDER BY exrate ASC, from_curr ASC";
+        $sql_select = "SELECT * FROM import WHERE valid=(SELECT MAX(valid) FROM import) ORDER BY exrate ASC, from_curr ASC, to_curr ASC";
       }
       $result = $this->db->query($sql_select);
       return $result;
