@@ -1,12 +1,16 @@
 <?php
+  $cl = 0;
+  $date = "";
   $row = $list_import->row();
-  $date = $row->valid;
-  $cl = $row->cl;
+  if($row != null){
+    $date = $row->valid;
+    $cl = $row->cl;
+  }
 
 ?>
 
 <h2>Display Import Result</h2>
-<font size="2" color="#337ab7">Cl: <?php echo $cl; ?> </font>
+<font size="2" color="#337ab7">Client: <?php echo $cl; ?> </font>
 <font size="2" color="#337ab7">Valid From: <?php echo $date; ?> </font>
 <br>
   <form action="<?php echo base_url('index.php/import/display_import/')?>" method="POST">
@@ -40,59 +44,98 @@
       <td><?php echo $row->exch;?></td>
       <td><?php echo $row->ratio;?></td>
       <td><?php echo $row->ratio_b;?></td>
-      <td>
       <?php
         $type = $row->exrate;
         $date = $row->valid;
         $from = $row->from_curr;
         $to = $row->to_curr;
         $display = 0;
+        $ratio = 0;
         if($from == 'USDN'){$from = 'USD';};
-        $ratio = 1000;
-        if((in_array($from, array('JPY', 'THB'))) OR (in_array($to, array('USD', 'HKD')))){$ratio = 1;};
         if(in_array($type, array('M', 'B', 'G'))){
+          $ratio = 1000;
+          if((in_array($from, array('JPY', 'THB'))) OR ($to != 'IDR')){$ratio = 1;};
           $source = 'BI';
-          $result = $this->m_exrate->getCurr($from, $source, '2018-08-01');
+          $result = $this->m_exrate->getCurr($from, $source, $date);
           $compRow = $result->row();
-          if($to == 'IDR'){
-            switch ($type) {
-              case 'M':
-                $display = ($compRow->KURS_TENGAH/$compRow->NILAI)/$ratio;
-                break;
-              
-              case 'B':
-                $display = ($compRow->KURS_JUAL/$compRow->NILAI)/$ratio;
-                break;
-              
-              case 'G':
-                $display = ($compRow->KURS_BELI/$compRow->NILAI)/$ratio;
-                break;
+          if($compRow != null){
+            if($to == 'IDR'){
+              switch ($type) {
+                case 'M':
+                  $display = ($compRow->KURS_TENGAH/$compRow->NILAI)/$ratio;
+                  break;
+                
+                case 'B':
+                  $display = ($compRow->KURS_JUAL/$compRow->NILAI)/$ratio;
+                  break;
+                
+                case 'G':
+                  $display = ($compRow->KURS_BELI/$compRow->NILAI)/$ratio;
+                  break;
+              }
+            }else{
+              $anotherResult = $this->m_exrate->getCurr($to, $source, $date);
+              $anotherRow = $anotherResult->row();
+              if($anotherRow != null){
+                $display = (($compRow->KURS_TENGAH/$compRow->NILAI)/$anotherRow->KURS_TENGAH/$ratio);
+              }
+            }
+          }
+        }else{
+          if($from == 'HKD' OR $to == 'HKD'){
+            $ratio = 1;
+            $source = 'HSBC';
+            if($from == 'HKD'){$from = $to;};
+            $result = $this->m_exrate->getCurr($from, $source, $date);
+            $compRow = $result->row();
+            if($compRow != null){
+              $display = ($compRow->KURS_TENGAH/$compRow->NILAI)/$ratio;
+              if($to != 'HKD'){
+                $display = 1/$display;
+              }
             }
           }else{
-            $anotherResult = $this->m_exrate->getCurr($to, $source, '2018-08-01');
-            $anotherRow = $anotherResult->row();
-            $display = ($compRow->KURS_TENGAH/$compRow->NILAI)/$anotherRow->KURS_TENGAH;
+            $ratio = 1;
+            $source = 'MAS';
+            if($to == 'IDR'){$ratio = 1000;}
+            if($from != 'SGD'){
+              $result = $this->m_exrate->getCurr($from, $source, $date);
+              $compRow = $result->row();
+              if($compRow != null){
+                $anotherResult = $this->m_exrate->getCurr($to, $source, $date);
+                $anotherRow = $anotherResult->row();
+                if($anotherRow != null){
+                  $display = (($compRow->KURS_TENGAH*$anotherRow->NILAI)/$anotherRow->KURS_TENGAH)/$ratio;
+                }
+              }
+            }else{
+              $result = $this->m_exrate->getCurr($to, $source, $date);
+              $compRow = $result->row();
+              if($compRow != null){
+                $display = 1/(($compRow->KURS_TENGAH/$compRow->NILAI)/$ratio);
+              }
+            }
+
           }
-          echo number_format($display, 5, ".", ",");
 
         }
+
+        $display = number_format($display, 5, ".", ",");
         
       ?>
-      </td>
+      <td><?php echo $display;?></td>
       <td><?php echo $ratio;?></td>
       <?php
         $diff = $row->exch - $display;
-        $diff = number_format($diff, 5, ".", ",");
+        $color = '';
         if($diff > 0){
           $color = '#99e58f';
-        }else if($diff == 0){
-          $color = '#337ab7';
-        }else{
+        }else if($diff < 0){
           $color = '#ff6767';
         }
       ?>
       <td bgcolor="<?php echo $color;?>">
-        <?php echo $diff;?>
+        <?php echo number_format($diff, 5, ".", ",");?>
       </td>
     </tr>
     <?php

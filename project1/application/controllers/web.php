@@ -29,7 +29,6 @@ class Web extends CI_Controller{
 			'hsbc' => array('Hongkong & Shanghai Bank Corporation', 'HKD'),
 		);
 		$this->load->view('template',$data);
-		//this is great
 	}
 
 

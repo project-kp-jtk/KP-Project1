@@ -3,8 +3,10 @@
     $src = $this->uri->segment(3);
     $date = "";
     $row = $comp->row();
-    $comparator = $row->KURS_TENGAH;
-    $date = $row->TANGGAL;
+    if($row != null){
+      $comparator = $row->KURS_TENGAH;
+      $date = $row->TANGGAL;
+    }
     
     echo $source_string[$src][0];
     if($src == 'bi'){

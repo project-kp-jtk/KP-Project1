@@ -15,8 +15,7 @@
 
     function import_file(){
         $this->m_import->importing();
-        $data['content_view'] = "display.php";
-        $this->load->view('template',$data);
+        redirect(base_url('index.php/import/display_import/'));
     }
 
     function display_import(){
