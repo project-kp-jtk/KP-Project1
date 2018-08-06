@@ -1,13 +1,10 @@
-
 .navbar {
       margin-bottom: 0;
-      background-color: black;
+      background-color: white;
       border-color: white;
       z-index: 2;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    
-  }
-
+    }
 .navbar-brand{
   margin-top: -5px;
 }
@@ -16,16 +13,16 @@
   height: 30px;
 }
 .logo-BI {
-  width: 130px;
-  height: 50px;
+  width: 200px;
+  height: 80px;
 }
 .logo-HSBC {
   width: 110px;
   height: 80px;
 }
 .logo-MAS {
-  width: 90px;
-  height: 70px;
+  width: 100px;
+  height: 80px;
 }
 .container{
   max-width: 700px;
@@ -36,28 +33,14 @@
   color: seashell;
 }
 #main {
-padding: 0px 10px;
-margin-top: 70px;
-margin-left: 20px;
-margin-right: 20px;
+  padding: 0px 10px;
+  margin-top: 70px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
-
 .navbar {
-    overflow: hidden;
+    overflow: visible;
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
 }
-    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
-    /* .row.content {height: 750px;} */
-
-    /* Set gray background color and 100% height */
-   
-
-    /* On small screens, set height to 'auto' for sidenav and grid */
-    /* @media screen and (max-height: 450px) {
-      .sidenav {
-        padding-top: 15px;
-      }
-      .row.content {height:auto;}
-    } */

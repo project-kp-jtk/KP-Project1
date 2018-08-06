@@ -9,7 +9,6 @@
           <tr>
             <th>Kode</th>
             <th>Tengah</th>
-            <th>SAP</th>
           </tr>
         </thead>
         <tbody>
@@ -31,7 +30,6 @@
           <tr>
             <th>Kode</th>
             <th>Tengah</th>
-            <th>SAP</th>
           </tr>
         </thead>
         <tbody>
@@ -52,7 +50,6 @@
           <tr>
             <th>Kode</th>
             <th>Tengah</th>
-            <th>SAP</th>
           </tr>
         </thead>
         <tbody>
@@ -61,7 +58,6 @@
             <tr>
               <td><?php echo $row->KODE;?></td>
               <td><?php echo number_format($row->KURS_TENGAH, 5, ".", ",");?></td>
-              <td></td>
             </tr>
           <?php } ?>
         </tbody>
