@@ -45,14 +45,14 @@
         $type = $row->exrate;
         $date = $row->valid;
         $from = $row->from_curr;
+        $to = $row->to_curr;
         $display = 0;
         if($from == 'USDN'){$from = 'USD';};
-        $to = $row->to_curr;
+        $ratio = 1000;
+        if((in_array($from, array('JPY', 'THB'))) OR (in_array($to, array('USD', 'HKD')))){$ratio = 1;};
         if(in_array($type, array('M', 'B', 'G'))){
           $source = 'BI';
           $result = $this->m_exrate->getCurr($from, $source, '2018-08-01');
-          $ratio = 1000;
-          if($from == 'JPY'){$ratio = 1;};
           $compRow = $result->row();
           if($to == 'IDR'){
             switch ($type) {
@@ -71,7 +71,7 @@
           }else{
             $anotherResult = $this->m_exrate->getCurr($to, $source, '2018-08-01');
             $anotherRow = $anotherResult->row();
-            $display = $compRow->KURS_TENGAH/$anotherRow->KURS_TENGAH;
+            $display = ($compRow->KURS_TENGAH/$compRow->NILAI)/$anotherRow->KURS_TENGAH;
           }
           echo number_format($display, 5, ".", ",");
 
