@@ -2,11 +2,10 @@
   <?php
     $src = $this->uri->segment(3);
     $date = "";
-    foreach ($comp->result() as $row) {
-      // code...
-      $comparator = $row->KURS_TENGAH;
-      $date = $row->TANGGAL;
-    }
+    $row = $comp->row();
+    $comparator = $row->KURS_TENGAH;
+    $date = $row->TANGGAL;
+
     echo $source_string[$src][0];
     if($src == 'bi'){
       $dec = 2;
@@ -21,11 +20,12 @@
   <br>
   <form action="<?php echo base_url('index.php/web/source/'.$src)?>" method="POST">
     Group by: <input type="date" name="tgl">
-    <button type="button" class="btn btn-success">
+    <button type="submit" class="btn btn-success">
       <span class="glyphicon glyphicon-search"></span>  Search
     </button>
   </form>
   <br>
+  <div id="constrainer2">
   <table class="table table-striped">
     <thead>
       <tr>
@@ -66,4 +66,5 @@
   <?php } ?>
   </tbody>
 </table>
+</div>
 </font>

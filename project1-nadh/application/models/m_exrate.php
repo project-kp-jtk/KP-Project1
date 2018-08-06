@@ -6,9 +6,9 @@ require(APPPATH.'libraries/simple_html_dom.php');
         public function __construct(){
         }
 
-        function get_data_sourcebased($source_id){
-          if($this->input->post('tgl') != null){
-            $sql_select = "SELECT * FROM exchange_rate WHERE DATE(TANGGAL)='".$this->input->post('tgl')."' AND SOURCE='".$source_id."'";
+        function get_data_sourcebased($source_id, $tgl){
+          if($tgl != null){
+            $sql_select = "SELECT * FROM exchange_rate WHERE DATE(TANGGAL)='".$tgl."' AND SOURCE='".$source_id."'";
         }else {
             $sql_select = "SELECT * FROM exchange_rate WHERE DATE(TANGGAL)=(SELECT MAX(DATE(TANGGAL)) FROM (SELECT * FROM exchange_rate WHERE SOURCE='".$source_id."') AS `derived`) AND SOURCE='".$source_id."'";
           }
@@ -20,15 +20,9 @@ require(APPPATH.'libraries/simple_html_dom.php');
             $this->db->insert($table, $data);
         }
 
-        function get_data_datebased($source_id){
-            $sql_select = "SELECT * FROM exchange_rate WHERE DATE(TANGGAL)=(SELECT MAX(DATE(TANGGAL)) FROM (SELECT * FROM exchange_rate WHERE ID_SOURCE='".$source_id."') AS `derived`) AND ID_SOURCE='".$source_id."'";
-            $result = $this->db->query($sql_select);
-            return $result;
-        }
-
-        function getCurr($currency, $source_id){
-          if($this->input->post('tgl') != null){
-            $sql_select = "SELECT * FROM exchange_rate WHERE DATE(TANGGAL)='".$this->input->post('tgl')."' AND SOURCE='".$source_id."' AND KODE='".$currency."'";
+        function getCurr($currency, $source_id, $tgl){
+          if($tgl != null){
+            $sql_select = "SELECT * FROM exchange_rate WHERE DATE(TANGGAL)='".$tgl."' AND SOURCE='".$source_id."' AND KODE='".$currency."'";
           }else {
             $sql_select = "SELECT * FROM exchange_rate WHERE DATE(TANGGAL)=(SELECT MAX(DATE(TANGGAL)) FROM (SELECT * FROM exchange_rate WHERE SOURCE='".$source_id."') AS `derived`) AND SOURCE='".$source_id."' AND KODE='".$currency."'";
           }
@@ -119,6 +113,10 @@ require(APPPATH.'libraries/simple_html_dom.php');
               );
               $this->insert_data('ex_rate', $input);
           }
+        }
+
+        function get_single_data($source_id, $curr, $date){
+          
         }
 
     }

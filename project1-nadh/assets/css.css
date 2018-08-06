@@ -32,6 +32,11 @@
   display: block;
   color: seashell;
 }
+.dropdown-item:hover{
+  background-color: #337ab7;
+  display: block;
+  color: seashell;
+}
 #main {
   padding: 0px 10px;
   margin-top: 70px;
@@ -39,8 +44,49 @@
   margin-right: 20px;
 }
 .navbar {
-    overflow: hidden;
+    overflow: visible;
     position: fixed; /* Set the navbar to fixed position */
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
+}
+
+#constrainer2 {
+    width: 1015px;
+    overflow-x: scroll;
+}
+#constrainer3 {
+    width: 1305px;
+    overflow-x: scroll;
+}
+#constrainer2 tbody {
+    overflow-y: scroll;
+    display: block;
+    height: 450px;
+}
+#constrainer3 tbody {
+    overflow-y: scroll;
+    display: block;
+    height: 450px;
+}
+#constrainer2 thead {
+    display: table-row;
+}
+#constrainer3 thead {
+    display: table-row;
+}
+table {
+    border-collapse: collapse;
+}
+th, td {
+  min-width: 145px;
+  padding: 8px 16px;
+}
+th {
+    border-width: 1px;
+}
+td {
+    border-width: 1px;
+}
+tr:first-child td {
+    border-top-width: 0;
 }

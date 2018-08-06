@@ -6,32 +6,30 @@ class Web extends CI_Controller{
 	function __construct(){
 		parent::__construct();
 		$this->load->model('m_exrate');
+		$this->load->model('m_import');
 	}
 
 	function index(){
-		$data['list_bi'] = $this->m_exrate->get_data_datebased(strtoupper(1));
-		$data['list_hsbc'] = $this->m_exrate->get_data_datebased(strtoupper(3));
-		$data['list_mas'] = $this->m_exrate->get_data_datebased(strtoupper(2));
+		$data['list_bi'] = $this->m_exrate->get_data_sourcebased('BI', null);
+		$data['list_hsbc'] = $this->m_exrate->get_data_sourcebased('HSBC', null);
+		$data['list_mas'] = $this->m_exrate->get_data_sourcebased('MAS', null);
 		$data['content_view'] = "display_kurs.php";
 		$this->load->view('template',$data);
 	}
 
 	function source(){
 		$src = $this->uri->segment(3);
-		$data['list_kurs'] = $this->m_exrate->get_data_sourcebased(strtoupper($src));
-		$data['comp'] = $this->m_exrate->getCurr('USD', strtoupper($src));
+		$tgl = $this->input->post('tgl');
+		$data['list_kurs'] = $this->m_exrate->get_data_sourcebased(strtoupper($src), $tgl);
+		$data['comp'] = $this->m_exrate->getCurr('USD', strtoupper($src), $tgl);
 		$data['content_view'] = "source.php";
 		$data['source_string'] = array(
 			'bi' => array('Bank Indonesia', 'IDR'),
 			'mas' => array('Monetary Authority Singapore', 'SGD'),
 			'hsbc' => array('Hongkong & Shanghai Bank Corporation', 'HKD'),
-			'yahoo' => array('Yahoo Finance', '')
 		);
 		$this->load->view('template',$data);
 	}
 
-	function display_import(){
-		$data['content_view'] = "view_display_import.php";
-		$this->load->view('template',$data);
-	}
+
 }
