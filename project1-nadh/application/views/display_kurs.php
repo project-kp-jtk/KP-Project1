@@ -7,7 +7,7 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th colspan="2"><img class="logo-BI" src="<?php echo base_url()?>assets/img/BI.png"></th>
+            <th colspan="2"><center><img class="logo-BI" src="<?php echo base_url()?>assets/img/BI.png"></center></th>
           </tr>
           <tr>
             <th>Kode</th>
@@ -32,7 +32,7 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th colspan="2"><img class="logo-HSBC" src="<?php echo base_url()?>assets/img/HSBC.png"></th>
+            <th colspan="2"><center><img class="logo-HSBC" src="<?php echo base_url()?>assets/img/HSBC.png"></center></th>
           <tr>
             <th>Kode</th>
             <th>Tengah</th>
@@ -56,7 +56,7 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th colspan="2"><img class="logo-MAS" src="<?php echo base_url()?>assets/img/MAS.png"></th>
+            <th colspan="2"><center><img class="logo-MAS" src="<?php echo base_url()?>assets/img/MAS.png"></center></th>
           </tr>
           <tr>
             <th>Kode</th>
