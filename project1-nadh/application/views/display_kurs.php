@@ -1,11 +1,14 @@
 
   <center><h2>Kurs Mata Uang Terakhir</h2></center>
-  <hr>
+  <br>
   <div class="row">
     <div class="col-sm-4">
-      <img class="logo-BI" src="<?php echo base_url()?>assets/img/BI.png">
+      <div id="constrainer">
       <table class="table table-striped">
         <thead>
+          <tr>
+            <th colspan="2"><img class="logo-BI" src="<?php echo base_url()?>assets/img/BI.png"></th>
+          </tr>
           <tr>
             <th>Kode</th>
             <th>Tengah</th>
@@ -22,11 +25,14 @@
         </tbody>
       </table>
     </div>
+    </div>
 
     <div class="col-sm-4">
-      <img class="logo-HSBC" src="<?php echo base_url()?>assets/img/HSBC.png">
+      <div id="constrainer">
       <table class="table table-striped">
         <thead>
+          <tr>
+            <th colspan="2"><img class="logo-HSBC" src="<?php echo base_url()?>assets/img/HSBC.png"></th>
           <tr>
             <th>Kode</th>
             <th>Tengah</th>
@@ -43,10 +49,15 @@
         </tbody>
       </table>
     </div>
+    </div>
+
     <div class="col-sm-4">
-      <img class="logo-MAS" src="<?php echo base_url()?>assets/img/MAS.png">
+      <div id="constrainer">
       <table class="table table-striped">
         <thead>
+          <tr>
+            <th colspan="2"><img class="logo-MAS" src="<?php echo base_url()?>assets/img/MAS.png"></th>
+          </tr>
           <tr>
             <th>Kode</th>
             <th>Tengah</th>
@@ -63,4 +74,5 @@
         </tbody>
       </table>
     </div>
+  </div>
   </div>
